@@ -149,7 +149,8 @@ public class AttributeFilterScreen extends AbstractFilterScreen<AttributeFilterM
 			.append("..."));
 		attributesOfItem.clear();
 		for (ItemAttribute itemAttribute : ItemAttribute.types)
-			attributesOfItem.addAll(itemAttribute.listAttributesOf(stack, minecraft.level));
+			if (itemAttribute != null)
+				attributesOfItem.addAll(itemAttribute.listAttributesOf(stack, minecraft.level));
 		List<Component> options = attributesOfItem.stream()
 			.map(a -> a.format(false))
 			.collect(Collectors.toList());
